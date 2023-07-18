@@ -77,6 +77,13 @@ spec:
             secretKeyRef:
               name: openshift-console-secret
               key: token
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop: ["ALL"]
+          runAsNonRoot: true
+          seccompProfile:
+            type: RuntimeDefault
 ---
 apiVersion: v1
 kind: Service
